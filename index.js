@@ -21,7 +21,9 @@ function run(file)  {
 
       {
 
-        
+        AddressOfEntryPoint = bytes[b];
+
+        console.log(AddressOfEntryPoint);
 
       }
 

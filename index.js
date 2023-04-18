@@ -10,11 +10,10 @@ function onReaderLoad(event){
 
     var bytes = event.target.result.split('');
 
-    for ( var byte in bytes ) {
+    for ( var b = 0; b < bytes.length; b++ ) {
 
-      var byteValue = "0x" + byte.charCodeAt(0).toString(16);
+      var byteValue = "0x" + bytes[b].charCodeAt(0).toString(16);
 
-      console.log(byteValue);
 
     }
 

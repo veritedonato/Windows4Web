@@ -5,35 +5,29 @@ import './style.css';
 const appDiv = document.getElementById('app');
 const statusDiv = document.getElementById('status');
 
+
 function onReaderLoad(event){
 
-    run(event.target.result);
+    var bytes = event.target.result.split('');
+
+    for ( var byte in bytes ) {
+
+      var byteValue = "0x" + byte.charCodeAt(0).toString(16);
+
+      console.log(byteValue);
+
+    }
 
 }
 
-function run(file)  {
-
-    var bytes = file.split("");
-
-    var AddressOfEntryPoint = 0;
-
-    for ( var b = 90; b < bytes.length; b++ )
-
-      {
-
-        AddressOfEntryPoint = bytes[b];
-
-        console.log(AddressOfEntryPoint);
-
-      }
-
-}
 
 const fileSelector = document.getElementById('file-selector');
 fileSelector.addEventListener('change', (event) => {
+  var file = event.target.files[0];
 
   var reader = new FileReader();
   reader.onload = onReaderLoad;
-  reader.readAsText(event.target.files[0]);
+  var blob = file.slice(0, file.size);
+  reader.readAsBinaryString(blob);
 
 });
